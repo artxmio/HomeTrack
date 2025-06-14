@@ -2,7 +2,7 @@
 using HomeTrack.Domain;
 using MediatR;
 
-namespace HomeTrack.Application.Residents.CreateResident;
+namespace HomeTrack.Application.Residents.Commands.CreateResident;
 
 public class CreateResidentCommandHandler
     : IRequestHandler<CreateResidentCommand, Guid>
@@ -11,7 +11,7 @@ public class CreateResidentCommandHandler
 
     public CreateResidentCommandHandler(IHomeTrackDbContext dbContext)
     {
-        this._dbContext = dbContext;
+        _dbContext = dbContext;
     }
 
     public async Task<Guid> Handle(CreateResidentCommand request, CancellationToken cancellationToken)

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HomeTrack.Application.Residents.UpdateResident;
+namespace HomeTrack.Application.Residents.Commands.UpdateResident;
 
 public class UpdateResidentCommand : IRequest
 {

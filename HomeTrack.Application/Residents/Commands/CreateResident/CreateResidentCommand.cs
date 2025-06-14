@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using System.Net;
 
-namespace HomeTrack.Application.Residents.CreateResident;
+namespace HomeTrack.Application.Residents.Commands.CreateResident;
 
 public class CreateResidentCommand : IRequest<Guid>
 {

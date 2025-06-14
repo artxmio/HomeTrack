@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HomeTrack.Application.Residents.DeleteResident;
+namespace HomeTrack.Application.Residents.Commands.DeleteResident;
 
 public class DeleteResidentCommand : IRequest
 {

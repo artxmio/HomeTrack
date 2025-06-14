@@ -4,7 +4,7 @@ using HomeTrack.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HomeTrack.Application.Residents.UpdateResident;
+namespace HomeTrack.Application.Residents.Commands.UpdateResident;
 
 public class UpdateResidentCommandHandler
     : IRequestHandler<UpdateResidentCommand>
@@ -13,7 +13,7 @@ public class UpdateResidentCommandHandler
 
     public UpdateResidentCommandHandler(IHomeTrackDbContext dbContext)
     {
-        this._dbContext = dbContext;
+        _dbContext = dbContext;
     }
 
     public async Task Handle(UpdateResidentCommand request, CancellationToken cancellationToken)

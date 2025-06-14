@@ -4,7 +4,7 @@ using HomeTrack.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HomeTrack.Application.Residents.DeleteResident;
+namespace HomeTrack.Application.Residents.Commands.DeleteResident;
 
 public class DeleteResidentCommandHandler
     : IRequestHandler<DeleteResidentCommand>
@@ -13,7 +13,7 @@ public class DeleteResidentCommandHandler
 
     public DeleteResidentCommandHandler(IHomeTrackDbContext dbContext)
     {
-        this._dbContext = dbContext;
+        _dbContext = dbContext;
     }
 
     public async Task Handle(DeleteResidentCommand request, CancellationToken cancellationToken)
