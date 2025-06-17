@@ -15,8 +15,4 @@
     <ProjectReference Include="..\HomeTrack.Persistense\HomeTrack.Persistense.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

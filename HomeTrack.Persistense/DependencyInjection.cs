@@ -11,10 +11,10 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         var connectionString = configuration["DbConnection"];
-
+        var serverVersion = new MySqlServerVersion(new Version(configuration["DatabaseSettings:ServerVersion"]));
         services.AddDbContext<HomeTrackDbContext>(options =>
         {
-            options.UseMySql(connectionString);
+            options.UseMySql(connectionString, serverVersion);
         });
 
         services.AddScoped<IHomeTrackDbContext>(profider => 
