@@ -2,7 +2,7 @@
 using HomeTrack.Application.Common.Mappings;
 using HomeTrack.Application.Residents.Commands.UpdateResident;
 
-namespace HomeTrack.WebApi.Controllers;
+namespace HomeTrack.WebApi.Models;
 
 public class UpdateResidentDto : IMapWith<UpdateResidentCommand>
 {

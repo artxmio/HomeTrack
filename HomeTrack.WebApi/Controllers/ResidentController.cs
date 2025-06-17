@@ -19,7 +19,6 @@ public class ResidentController : BaseController
         this._mapper = mapper;
     }
 
-
     [HttpGet("get_all")]
     public async Task<ActionResult<ResidentListVm>> GetAll()
     {

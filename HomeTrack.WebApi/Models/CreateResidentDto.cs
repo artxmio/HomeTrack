@@ -13,8 +13,8 @@ public class CreateResidentDto : IMapWith<CreateResidentCommand>
     {
         profile.CreateMap<CreateResidentDto, CreateResidentCommand>()
             .ForMember(residentCommand => residentCommand.Name,
-                       opt => opt.MapFrom(residentDto => Name))
+                       opt => opt.MapFrom(residentDto => residentDto.Name))
             .ForMember(residentCommand => residentCommand.Surname,
-                       opt => opt.MapFrom(residentDto => Surname));
+                       opt => opt.MapFrom(residentDto => residentDto.Surname));
     }
 }

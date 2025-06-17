@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-// 🔹 Добавляем Swagger
+//Добавляем Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen(c =>
         Contact = new OpenApiContact
         {
             Name = "Артем",
-            Email = "your-email@example.com"
+            Email = "artem.artusevskij01@gmail.com"
         }
     });
 });
