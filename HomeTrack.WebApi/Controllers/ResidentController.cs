@@ -10,14 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace HomeTrack.WebApi.Controllers;
 
 [Route("api/[controller]")]
-public class ResidentController : BaseController
+public class ResidentController(IMapper mapper) : BaseController
 {
-    private readonly IMapper _mapper;
-
-    public ResidentController(IMapper mapper)
-    {
-        this._mapper = mapper;
-    }
+    private readonly IMapper _mapper = mapper;
 
     [HttpGet("get_all")]
     public async Task<ActionResult<ResidentListVm>> GetAll()
