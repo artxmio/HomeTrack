@@ -14,7 +14,7 @@ public class ResidentController(IMapper mapper) : BaseController
 {
     private readonly IMapper _mapper = mapper;
 
-    [HttpGet("get_all")]
+    [HttpGet("get-all")]
     public async Task<ActionResult<ResidentListVm>> GetAll()
     {
         var query = new GetResidentListQuery();

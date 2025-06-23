@@ -14,10 +14,10 @@ public class UpdateResidentDto : IMapWith<UpdateResidentCommand>
     {
         profile.CreateMap<UpdateResidentDto, UpdateResidentCommand>()
               .ForMember(residentCommand => residentCommand.Id,
-               opt => opt.MapFrom(residentDto => Id))
+               opt => opt.MapFrom(residentDto => residentDto.Id))
               .ForMember(residentCommand => residentCommand.Name,
-               opt => opt.MapFrom(residentDto => Name))
+               opt => opt.MapFrom(residentDto => residentDto.Name))
               .ForMember(residentCommand => residentCommand.Surname,
-               opt => opt.MapFrom(residentDto => Surname));
+               opt => opt.MapFrom(residentDto => residentDto.Surname));
     }
 }
