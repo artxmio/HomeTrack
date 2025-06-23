@@ -12,7 +12,6 @@ public class ResidentTypeConfiguration : IEntityTypeConfiguration<Resident>
         builder.HasIndex(r => r.Id).IsUnique();
         builder.Property(r => r.Name).HasMaxLength(250);
         builder.Property(r => r.Surname).HasMaxLength(250);
-
         builder.HasOne(r => r.Apartment)
             .WithMany(a => a.Residents)
             .HasForeignKey(r => r.ApartmentId)

@@ -8,4 +8,7 @@ public class Apartment
     public int Area { get; set; }
 
     public ICollection<Resident> Residents { get; set; } = [];
+
+    public Guid HouseId { get; set; }
+    public House House { get; set; } = null!;
 }

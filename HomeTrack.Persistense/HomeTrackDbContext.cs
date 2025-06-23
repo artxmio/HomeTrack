@@ -9,11 +9,13 @@ public class HomeTrackDbContext(DbContextOptions<HomeTrackDbContext> options) : 
 {
     public DbSet<Resident> Residents { get; set; }
     public DbSet<Apartment> Apartments { get; set; }
+    public DbSet<House> Houses{ get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new ResidentTypeConfiguration());
         modelBuilder.ApplyConfiguration(new ApartmentTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new HouseTypeConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }
