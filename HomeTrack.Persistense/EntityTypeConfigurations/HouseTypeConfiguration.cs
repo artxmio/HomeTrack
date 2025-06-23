@@ -23,5 +23,8 @@ public class HouseTypeConfiguration : IEntityTypeConfiguration<House>
             .HasMany(h => h.Apartments)
             .WithOne(a => a.House)
             .HasForeignKey(a => a.HouseId);
+        builder.HasOne(h => h.ResidentialСomplex)
+            .WithMany(rc => rc.Houses)
+            .HasForeignKey(h => h.ResidentialСomplexId);
     }
 }

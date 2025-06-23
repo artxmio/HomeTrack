@@ -10,4 +10,7 @@ public class House
     public int NumberOfEntrances { get; set; }
 
     public ICollection<Apartment> Apartments { get; set; } = [];
+
+    public Guid ResidentialСomplexId { get; set; }
+    public ResidentialСomplex ResidentialСomplex { get; set; } = null!;
 }
