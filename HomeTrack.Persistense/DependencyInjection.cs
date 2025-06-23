@@ -11,7 +11,9 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         var connectionString = configuration["DbConnection"];
-        var serverVersion = new MySqlServerVersion(new Version(configuration["DatabaseSettings:ServerVersion"]));
+        var serverVersion = new MySqlServerVersion(new Version(configuration["DatabaseSettings:ServerVersion"] 
+            ?? throw new NullReferenceException("server version was null")));
+        
         services.AddDbContext<HomeTrackDbContext>(options =>
         {
             options.UseMySql(connectionString, serverVersion);

@@ -8,9 +8,14 @@ public class ResidentTypeConfiguration : IEntityTypeConfiguration<Resident>
 {
     public void Configure(EntityTypeBuilder<Resident> builder)
     {
-        builder.HasKey(x => x.Id);
-        builder.HasIndex(x => x.Id).IsUnique();
-        builder.Property(x => x.Name).HasMaxLength(250);
-        builder.Property(x => x.Surname).HasMaxLength(250);
+        builder.HasKey(r => r.Id);
+        builder.HasIndex(r => r.Id).IsUnique();
+        builder.Property(r => r.Name).HasMaxLength(250);
+        builder.Property(r => r.Surname).HasMaxLength(250);
+
+        builder.HasOne(r => r.Apartment)
+            .WithMany(a => a.Residents)
+            .HasForeignKey(r => r.ApartmentId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }
