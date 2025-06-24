@@ -7,19 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Residents.Queries.GetResidentDetails;
 
-public class GetResidentDetailsQueryHandler
-    : IRequestHandler<GetResidentDetailsQuery, ResidentDetailsVm>
+public class GetResidentDetailsQueryHandler(
+    IHomeTrackDbContext dbContext,
+    IMapper mapper)
+        : IRequestHandler<GetResidentDetailsQuery, ResidentDetailsVm>
 {
-    private readonly IHomeTrackDbContext _dbContext;
-    private readonly IMapper _mapper;
-
-    public GetResidentDetailsQueryHandler(
-        IHomeTrackDbContext dbContext, 
-        IMapper mapper)
-    {
-        this._dbContext = dbContext;
-        this._mapper = mapper;
-    }
+    private readonly IHomeTrackDbContext _dbContext = dbContext;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<ResidentDetailsVm> Handle(GetResidentDetailsQuery request, CancellationToken cancellationToken)
     {

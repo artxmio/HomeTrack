@@ -6,17 +6,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Residents.Queries.GetResidentList;
 
-public class GetResidentListQueryHandler
-    : IRequestHandler<GetResidentListQuery, ResidentListVm>
+public class GetResidentListQueryHandler(IHomeTrackDbContext dbContext, IMapper mapper)
+        : IRequestHandler<GetResidentListQuery, ResidentListVm>
 {
-    private readonly IHomeTrackDbContext _dbContext;
-    private readonly IMapper _mapper;
-
-    public GetResidentListQueryHandler(IHomeTrackDbContext dbContext, IMapper mapper)
-    {
-        this._dbContext = dbContext;
-        this._mapper = mapper;
-    }
+    private readonly IHomeTrackDbContext _dbContext = dbContext;
+    private readonly IMapper _mapper = mapper;
 
     public async Task<ResidentListVm> Handle(GetResidentListQuery request, CancellationToken cancellationToken)
     {
