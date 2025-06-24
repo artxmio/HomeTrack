@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using System.Net;
 
 namespace HomeTrack.Application.Residents.Commands.CreateResident;
 

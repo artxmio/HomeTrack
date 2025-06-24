@@ -25,4 +25,8 @@
     <ProjectReference Include="..\HomeTrack.Domain\HomeTrack.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ResidentialComplex\Commands\" />
+  </ItemGroup>
+
 </Project>

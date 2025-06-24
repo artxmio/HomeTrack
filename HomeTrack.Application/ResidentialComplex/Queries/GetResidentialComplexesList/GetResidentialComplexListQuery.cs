@@ -2,7 +2,7 @@
 
 namespace HomeTrack.Application.ResidentialComplex.Queries.GetResidentialComplexesList;
 
-public class GetResidentialComplexesListQuery
+public class GetResidentialComplexListQuery
     : IRequest<ResidentialComplexListVm>
 {
 }
