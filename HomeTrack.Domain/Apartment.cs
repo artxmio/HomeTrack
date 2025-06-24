@@ -4,6 +4,7 @@ public class Apartment
 {
     public Guid Id { get; set; }
     public string Number { get; set; } = string.Empty;
+    public int Entrance { get; set; }
     public int Floor { get; set; }
     public int Area { get; set; }
     public DateTime CreateDate { get; set; }

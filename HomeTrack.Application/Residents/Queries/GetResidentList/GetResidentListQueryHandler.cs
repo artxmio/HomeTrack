@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Residents.Queries.GetResidentList;
 
-public class GetResidentListQueryHandler(IHomeTrackDbContext dbContext, IMapper mapper)
-        : IRequestHandler<GetResidentListQuery, ResidentListVm>
+public class GetResidentListQueryHandler(IHomeTrackDbContext dbContext, IMapper mapper) : 
+    IRequestHandler<GetResidentListQuery, ResidentListVm>
 {
     private readonly IHomeTrackDbContext _dbContext = dbContext;
     private readonly IMapper _mapper = mapper;

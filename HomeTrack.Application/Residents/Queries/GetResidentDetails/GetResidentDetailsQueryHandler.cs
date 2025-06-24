@@ -7,9 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Residents.Queries.GetResidentDetails;
 
-public class GetResidentDetailsQueryHandler(
-    IHomeTrackDbContext dbContext,
-    IMapper mapper)
+public class GetResidentDetailsQueryHandler(IHomeTrackDbContext dbContext, IMapper mapper)
         : IRequestHandler<GetResidentDetailsQuery, ResidentDetailsVm>
 {
     private readonly IHomeTrackDbContext _dbContext = dbContext;

@@ -18,7 +18,7 @@ public class HouseDetailsVm : IMapWith<House>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<House, HouseLookupDto>()
+        profile.CreateMap<House, HouseDetailsVm>()
             .ForMember(houseVm => houseVm.Id,
             opt => opt.MapFrom(houseVm => houseVm.Id))
             .ForMember(houseVm => houseVm.Street,
