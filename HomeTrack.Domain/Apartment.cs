@@ -6,6 +6,8 @@ public class Apartment
     public string Number { get; set; } = string.Empty;
     public int Floor { get; set; }
     public int Area { get; set; }
+    public DateTime CreateDate { get; set; }
+    public DateTime? UpdateDate { get; set; }
 
     public ICollection<Resident> Residents { get; set; } = [];
 

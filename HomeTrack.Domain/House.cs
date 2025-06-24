@@ -8,6 +8,8 @@ public class House
     public string Number { get; set; } = string.Empty;
     public int NumberOfFloors { get; set; }
     public int NumberOfEntrances { get; set; }
+    public DateTime CreateDate { get; set; }
+    public DateTime? UpdateDate { get; set; }
 
     public ICollection<Apartment> Apartments { get; set; } = [];
 
