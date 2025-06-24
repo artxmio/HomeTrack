@@ -19,7 +19,8 @@ public class CreateHouseCommandHandler(IHomeTrackDbContext dbContext) :
             Number = request.Number,
             NumberOfEntrances = request.NumberOfEntrances,
             NumberOfFloors = request.NumberOfFloors,
-            CreateDate = DateTime.Now
+            CreateDate = DateTime.Now,
+            UpdateDate = null
         };
 
         await _dbContext.Houses.AddAsync(house, cancellationToken);

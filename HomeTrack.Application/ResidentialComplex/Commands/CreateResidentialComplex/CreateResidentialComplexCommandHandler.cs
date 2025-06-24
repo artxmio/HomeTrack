@@ -14,8 +14,9 @@ public class CreateResidentialComplexCommandHandler(IHomeTrackDbContext dbContex
         var complex = new ResidentialСomplex()
         {
             Id = Guid.NewGuid(),
-            Name = request.Name, 
-            CreateDate = DateTime.Now
+            Name = request.Name,
+            CreateDate = DateTime.Now,
+            UpdateDate = null
         };
 
         await _dbContext.ResidentialComplexes.AddAsync(complex, cancellationToken);
