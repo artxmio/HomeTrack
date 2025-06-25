@@ -13,6 +13,6 @@ public class House
 
     public ICollection<Apartment> Apartments { get; set; } = [];
 
-    public Guid ResidentialСomplexId { get; set; }
+    public Guid? ResidentialСomplexId { get; set; }
     public ResidentialСomplex ResidentialСomplex { get; set; } = null!;
 }

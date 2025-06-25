@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿namespace HomeTrack.Application.Exceptions;
 
-namespace HomeTrack.Application.Exceptions;
-
-public class NotFoundException : Exception
-{
-    public NotFoundException(string name, object key)
-        : base($"Entity \"{name}\" ({key}) not found.") {}
-}
+public class NotFoundException(string name, object key) :
+    Exception($"Entity \"{name}\" ({key}) not found.") {}

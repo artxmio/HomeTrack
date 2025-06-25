@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
+using AutoMapper.Configuration.Annotations;
+using HomeTrack.Application.Houses.Commands.AddApartmentToHouse;
 using HomeTrack.Application.Houses.Commands.CreateHouse;
 using HomeTrack.Application.Houses.Commands.DeleteHouse;
 using HomeTrack.Application.Houses.Commands.UpdateHouse;
+using HomeTrack.Application.Houses.Queries.GetApartmentsByHouse;
 using HomeTrack.Application.Houses.Queries.GetHouseDetails;
 using HomeTrack.Application.Houses.Queries.GetHouseList;
 using HomeTrack.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace HomeTrack.WebApi.Controllers;
 
@@ -38,6 +40,19 @@ public class HouseController(IMapper mapper) : BaseController
         return Ok(vm);
     }
 
+    [HttpGet("get-apartments")]
+    public async Task<ActionResult<ApartmentByHouseVm>> GetApartments([FromQuery] Guid id)
+    {
+        var query = new GetApartmentByHouseQuery()
+        {
+            HouseId = id
+        };
+
+        var vm = await Mediator.Send(query);
+
+        return Ok(vm);
+    }
+
     [HttpPost("create")]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateHouseDto createHouseDto)
     {
@@ -46,6 +61,16 @@ public class HouseController(IMapper mapper) : BaseController
         var houseId = await Mediator.Send(command);
 
         return Ok(houseId);
+    }
+
+    [HttpPatch("add-apartment")]
+    public async Task<ActionResult> AddApartment([FromBody] AddApartmentDto addApartmentDto)
+    {
+        var command = _mapper.Map<AddApartmentToHouseCommand>(addApartmentDto);
+
+        await Mediator.Send(command);
+
+        return NoContent();
     }
 
     [HttpPut("update")]

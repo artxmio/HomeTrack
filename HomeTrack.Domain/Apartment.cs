@@ -12,6 +12,6 @@ public class Apartment
 
     public ICollection<Resident> Residents { get; set; } = [];
 
-    public Guid HouseId { get; set; }
+    public Guid? HouseId { get; set; }
     public House House { get; set; } = null!;
 }
