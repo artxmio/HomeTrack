@@ -8,6 +8,7 @@ using HomeTrack.Application.Apartments.Commands.CreateApartment;
 using HomeTrack.Application.Apartments.Commands.UpdateApartment;
 using HomeTrack.Application.Apartments.Queries.GetResidentsByApartment;
 using HomeTrack.Application.Apartments.Commands.AddResidentToApartment;
+using HomeTrack.Application.Apartments.Commands.RemoveResidentFromApartment;
 
 namespace HomeTrack.WebApi.Controllers;
 
@@ -66,6 +67,16 @@ public class ApartmentController(IMapper mapper) : BaseController
     public async Task<ActionResult> AddResident([FromBody] AddResidentDto addResidentDto)
     {
         var command = _mapper.Map<AddResidentToApartmentCommand>(addResidentDto);
+
+        await Mediator.Send(command);
+
+        return NoContent();
+    }
+
+    [HttpPatch("remove-resident")]
+    public async Task<ActionResult> RemoveResidentFromApartment([FromBody] RemoveResidentDto removeResidentDto)
+    {
+        var command = _mapper.Map<RemoveResidentFromApartmentCommand>(removeResidentDto);
 
         await Mediator.Send(command);
 
