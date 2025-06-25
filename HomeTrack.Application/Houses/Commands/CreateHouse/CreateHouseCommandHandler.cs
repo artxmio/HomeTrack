@@ -1,6 +1,8 @@
-﻿using HomeTrack.Application.Interfaces;
+﻿using HomeTrack.Application.Exceptions;
+using HomeTrack.Application.Interfaces;
 using HomeTrack.Domain;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Houses.Commands.CreateHouse;
 
@@ -11,6 +13,10 @@ public class CreateHouseCommandHandler(IHomeTrackDbContext dbContext) :
 
     public async Task<Guid> Handle(CreateHouseCommand request, CancellationToken cancellationToken)
     {
+        var complex = await _dbContext.ResidentialComplexes
+            .FirstOrDefaultAsync(c => c.Id == request.ResidentialComplexId, cancellationToken) ??
+            throw new NotFoundException(nameof(House), request.ResidentialComplexId);
+
         var house = new House()
         {
             Id = Guid.NewGuid(),
@@ -19,6 +25,7 @@ public class CreateHouseCommandHandler(IHomeTrackDbContext dbContext) :
             Number = request.Number,
             NumberOfEntrances = request.NumberOfEntrances,
             NumberOfFloors = request.NumberOfFloors,
+            ResidentialСomplex = complex,
             CreateDate = DateTime.Now,
             UpdateDate = null
         };

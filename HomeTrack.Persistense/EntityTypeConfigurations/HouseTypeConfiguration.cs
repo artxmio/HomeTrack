@@ -22,9 +22,11 @@ public class HouseTypeConfiguration : IEntityTypeConfiguration<House>
         builder
             .HasMany(h => h.Apartments)
             .WithOne(a => a.House)
-            .HasForeignKey(a => a.HouseId);
+            .HasForeignKey(a => a.HouseId)
+            .OnDelete(DeleteBehavior.SetNull);
         builder.HasOne(h => h.ResidentialСomplex)
             .WithMany(rc => rc.Houses)
-            .HasForeignKey(h => h.ResidentialСomplexId);
+            .HasForeignKey(h => h.ResidentialСomplexId)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

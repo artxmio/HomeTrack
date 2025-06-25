@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HomeTrack.WebApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("api/resident")]
 public class ResidentController(IMapper mapper) : BaseController
 {
     private readonly IMapper _mapper = mapper;
@@ -25,7 +25,7 @@ public class ResidentController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get")]
-    public async Task<ActionResult<ResidentListVm>> Get([FromQuery] Guid id)
+    public async Task<ActionResult<ResidentDetailsVm>> Get([FromQuery] Guid id)
     {
         var query = new GetResidentDetailsQuery()
         {
