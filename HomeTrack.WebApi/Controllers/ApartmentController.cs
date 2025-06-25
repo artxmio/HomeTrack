@@ -6,6 +6,8 @@ using HomeTrack.WebApi.Models;
 using AutoMapper;
 using HomeTrack.Application.Apartments.Commands.CreateApartment;
 using HomeTrack.Application.Apartments.Commands.UpdateApartment;
+using HomeTrack.Application.Apartments.Queries.GetResidentsByApartment;
+using HomeTrack.Application.Apartments.Commands.AddResidentToApartment;
 
 namespace HomeTrack.WebApi.Controllers;
 
@@ -37,6 +39,19 @@ public class ApartmentController(IMapper mapper) : BaseController
         return Ok(vm);
     }
 
+    [HttpGet("get-residents")]
+    public async Task<ActionResult<ResidentsByApartmentVm>> GetResidents([FromQuery] Guid id)
+    {
+        var query = new GetResidentsByApartmentQuery()
+        {
+            ApartmentId = id
+        };
+
+        var vm = await Mediator.Send(query);
+
+        return Ok(vm);
+    }
+
     [HttpPost("create")]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateApartmentDto createApartmentDto)
     {
@@ -45,6 +60,16 @@ public class ApartmentController(IMapper mapper) : BaseController
         var apartmentId = await Mediator.Send(command);
 
         return Ok(apartmentId);
+    }
+
+    [HttpPatch("add-resident")]
+    public async Task<ActionResult> AddResident([FromBody] AddResidentDto addResidentDto)
+    {
+        var command = _mapper.Map<AddResidentToApartmentCommand>(addResidentDto);
+
+        await Mediator.Send(command);
+
+        return NoContent();
     }
 
     [HttpPut("update")]
