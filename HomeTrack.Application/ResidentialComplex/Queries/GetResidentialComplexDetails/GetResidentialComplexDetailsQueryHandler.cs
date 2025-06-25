@@ -16,7 +16,7 @@ public class GetResidentialComplexDetailsQueryHandler(IHomeTrackDbContext dbCont
     public async Task<ResidentialComplexVm> Handle(GetResidentialComplexDetailsQuery request, CancellationToken cancellationToken)
     {
         var entity = await _dbContext.ResidentialComplexes.FirstOrDefaultAsync(rc => rc.Id == request.Id, cancellationToken)
-            ?? throw new NotFoundException(nameof(Resident), request.Id);
+            ?? throw new NotFoundException(nameof(ResidentialComplex), request.Id);
 
         return _mapper.Map<ResidentialComplexVm>(entity);
     }

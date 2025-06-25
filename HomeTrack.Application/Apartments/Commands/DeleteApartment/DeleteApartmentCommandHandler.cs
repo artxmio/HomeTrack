@@ -15,7 +15,7 @@ public class DeleteApartmentCommandHandler(IHomeTrackDbContext dbContext)
     {
         var apartment = await _dbContext.Apartments
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken) 
-            ?? throw new NotFoundException(nameof(Resident), request.Id);
+            ?? throw new NotFoundException(nameof(Apartment), request.Id);
 
         _dbContext.Apartments.Remove(apartment);
 

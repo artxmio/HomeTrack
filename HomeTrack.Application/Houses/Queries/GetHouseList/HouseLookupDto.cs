@@ -19,14 +19,14 @@ public class HouseLookupDto : IMapWith<House>
             .ForMember(houseVm => houseVm.Id,
             opt => opt.MapFrom(houseVm => houseVm.Id))
             .ForMember(houseVm => houseVm.Street,
-            opt => opt.MapFrom(houseVm => houseVm.Street))
+            opt => opt.MapFrom(house => house.Street))
             .ForMember(houseVm => houseVm.City,
-            opt => opt.MapFrom(houseVm => houseVm.City))
+            opt => opt.MapFrom(house => house.City))
             .ForMember(houseVm => houseVm.Number,
-            opt => opt.MapFrom(houseVm => houseVm.Number))
+            opt => opt.MapFrom(house => house.Number))
             .ForMember(houseVm => houseVm.NumberOfFloors,
-            opt => opt.MapFrom(houseVm => houseVm.NumberOfFloors))
+            opt => opt.MapFrom(house => house.NumberOfFloors))
             .ForMember(houseVm => houseVm.NumberOfEntrances,
-            opt => opt.MapFrom(houseVm => houseVm.NumberOfEntrances));
+            opt => opt.MapFrom(house => house.NumberOfEntrances));
     }
 }

@@ -15,12 +15,13 @@ public class UpdateApartmentCommandHandler(IHomeTrackDbContext dbContext) :
     {
         var apartment = await _dbContext.Apartments
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken)
-            ?? throw new NotFoundException(nameof(Resident), request.Id);
+            ?? throw new NotFoundException(nameof(Apartment), request.Id);
 
         apartment.Entrance = request.Entrance;
         apartment.Floor = request.Floor;
         apartment.Area = request.Area;
         apartment.Number = request.Number;
+        apartment.HouseId = request.HouseId;
         apartment.UpdateDate = DateTime.Now;
 
         await _dbContext.SaveChangesAsync(cancellationToken);

@@ -17,7 +17,7 @@ public class GetApartmentDetailsQueryHandler(IHomeTrackDbContext dbContext, IMap
     {
         var apartment = await _dbContext.Apartments
             .FirstOrDefaultAsync(a => a.Id == request.Id, cancellationToken: cancellationToken) ?? 
-            throw new NotFoundException(nameof(Resident), request.Id);
+            throw new NotFoundException(nameof(Apartment), request.Id);
 
         return _mapper.Map<ApartmentDetailsVm>(apartment);
     }

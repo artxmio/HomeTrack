@@ -18,6 +18,7 @@ public class CreateApartmentCommandHandler(IHomeTrackDbContext dbContext) :
             Floor = request.Floor,
             Area = request.Area,
             Entrance = request.Entrance,
+            HouseId = request.HouseId,
             CreateDate = DateTime.Now,
             UpdateDate = null
         };

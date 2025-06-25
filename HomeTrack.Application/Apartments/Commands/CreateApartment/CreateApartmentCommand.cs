@@ -8,4 +8,6 @@ public class CreateApartmentCommand : IRequest<Guid>
     public int Entrance { get; set; }
     public int Floor { get; set; }
     public int Area { get; set; }
+
+    public Guid HouseId { get; set; }
 }

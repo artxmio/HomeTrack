@@ -15,7 +15,7 @@ public class ApartmentLookupDto : IMapWith<Apartment>
 
     public void Mapping(Profile profile)
     {
-        profile.CreateMap<Apartment, ApartmentDetailsVm>()
+        profile.CreateMap<Apartment, ApartmentLookupDto>()
            .ForMember(apartmentVm => apartmentVm.Id,
                       opt => opt.MapFrom(apartment => apartment.Id))
            .ForMember(apartmentVm => apartmentVm.Number,

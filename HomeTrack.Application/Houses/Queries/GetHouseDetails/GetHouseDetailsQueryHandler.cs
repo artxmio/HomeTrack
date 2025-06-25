@@ -16,7 +16,7 @@ public class GetHouseDetailsQueryHandler(IHomeTrackDbContext dbContext, IMapper 
     public async Task<HouseDetailsVm> Handle(GetHouseDetailsQuery request, CancellationToken cancellationToken)
     {
         var house = await _dbContext.Houses.FirstOrDefaultAsync(h => h.Id == request.Id, cancellationToken: cancellationToken) ??
-            throw new NotFoundException(nameof(Resident), request.Id);
+            throw new NotFoundException(nameof(Apartment), request.Id);
 
         return _mapper.Map<HouseDetailsVm>(house);
     }
