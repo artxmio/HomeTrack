@@ -12,9 +12,9 @@ public class RemoveResidentDto : IMapWith<RemoveResidentFromApartmentCommand>
     public void Mapping(Profile profile)
     {
         profile.CreateMap<RemoveResidentDto, RemoveResidentFromApartmentCommand>()
-            .ForMember(addResidentCommand => addResidentCommand.ResidentId,
+            .ForMember(removeResidentCommand => removeResidentCommand.ResidentId,
                 opt => opt.MapFrom(addResidentDto => addResidentDto.ResidentId))
-            .ForMember(addResidentCommand => addResidentCommand.ApartmentId,
+            .ForMember(removeResidentCommand => removeResidentCommand.ApartmentId,
                 opt => opt.MapFrom(addResidentDto => addResidentDto.ApartmentId));
     }
 }

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.Configuration.Annotations;
+using HomeTrack.Application.Apartments.Commands.RemoveResidentFromApartment;
 using HomeTrack.Application.Houses.Commands.AddApartmentToHouse;
 using HomeTrack.Application.Houses.Commands.CreateHouse;
 using HomeTrack.Application.Houses.Commands.DeleteHouse;
+using HomeTrack.Application.Houses.Commands.RemoveApartmentFromHouse;
 using HomeTrack.Application.Houses.Commands.UpdateHouse;
 using HomeTrack.Application.Houses.Queries.GetApartmentsByHouse;
 using HomeTrack.Application.Houses.Queries.GetHouseDetails;
@@ -67,6 +69,16 @@ public class HouseController(IMapper mapper) : BaseController
     public async Task<ActionResult> AddApartment([FromBody] AddApartmentDto addApartmentDto)
     {
         var command = _mapper.Map<AddApartmentToHouseCommand>(addApartmentDto);
+
+        await Mediator.Send(command);
+
+        return NoContent();
+    }
+
+    [HttpPatch("remove-apartment")]
+    public async Task<ActionResult> RemoveResidentFromApartment([FromBody] RemoveApartmentDto removeApartmentDto)
+    {
+        var command = _mapper.Map<RemoveApartmentFromHouseCommand>(removeApartmentDto);
 
         await Mediator.Send(command);
 
