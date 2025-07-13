@@ -7,6 +7,7 @@ namespace HomeTrack.Application.Apartments.Queries.GetApartmentDetails;
 public class ApartmentDetailsVm : IMapWith<Apartment>
 {
     public Guid Id { get; set; }
+    public Guid HouseId { get; set; }
     public string Number { get; set; } = string.Empty;
     public int Floor { get; set; }
     public int Area { get; set; }
@@ -19,6 +20,8 @@ public class ApartmentDetailsVm : IMapWith<Apartment>
         profile.CreateMap<Apartment, ApartmentDetailsVm>()
             .ForMember(apartmentVm => apartmentVm.Id,
                        opt => opt.MapFrom(apartment => apartment.Id))
+            .ForMember(apartmentVm => apartmentVm.HouseId,
+                       opt => opt.MapFrom(apartment => apartment.HouseId))
             .ForMember(apartmentVm => apartmentVm.Number,
                        opt => opt.MapFrom(apartmentVm => apartmentVm.Number))
             .ForMember(apartmentVm => apartmentVm.Floor,
