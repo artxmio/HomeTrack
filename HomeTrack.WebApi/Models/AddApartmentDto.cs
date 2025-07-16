@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using HomeTrack.Application.Apartments.Commands.AddResidentToApartment;
 using HomeTrack.Application.Common.Mappings;
 using HomeTrack.Application.Houses.Commands.AddApartmentToHouse;
 
@@ -14,8 +13,8 @@ public class AddApartmentDto : IMapWith<AddApartmentToHouseCommand>
     {
         profile.CreateMap<AddApartmentDto, AddApartmentToHouseCommand>()
             .ForMember(addApartmentCommand => addApartmentCommand.ApartmentId,
-                       opt => opt.MapFrom(addApartmenttDto => addApartmenttDto.ApartmentId))
+                       opt => opt.MapFrom(addApartmentDto => addApartmentDto.ApartmentId))
             .ForMember(addApartmentCommand => addApartmentCommand.ApartmentId,
-                       opt => opt.MapFrom(addApartmenttDto => addApartmenttDto.ApartmentId));
+                       opt => opt.MapFrom(addApartmentDto => addApartmentDto.ApartmentId));
     }
 }
