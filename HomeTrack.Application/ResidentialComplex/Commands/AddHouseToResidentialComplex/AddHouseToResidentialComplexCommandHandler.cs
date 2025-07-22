@@ -17,7 +17,7 @@ public class AddHouseToResidentialComplexCommandHandler(IHomeTrackDbContext dbCo
             .FirstOrDefaultAsync(h => h.Id == request.HouseId, cancellationToken)
             ?? throw new NotFoundException(nameof(House), request.HouseId);
 
-        house.ResidentialСomplexId = request.ResidendialComplexId;
+        house.ResidentialСomplexId = request.ResidentialComplexId;
         house.UpdateDate = DateTime.Now;
 
         await _dbContext.SaveChangesAsync(cancellationToken);

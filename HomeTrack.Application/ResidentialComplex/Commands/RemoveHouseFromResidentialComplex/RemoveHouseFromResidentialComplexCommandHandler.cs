@@ -4,7 +4,7 @@ using HomeTrack.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HomeTrack.Application.ResidentialComplex.RemoveHouseFromResidentialComplex;
+namespace HomeTrack.Application.ResidentialComplex.Commands.RemoveHouseFromResidentialComplex;
 
 public class RemoveHouseFromResidentialComplexCommandHandler(IHomeTrackDbContext dbContext)
     : IRequestHandler<RemoveHouseFromResidentialComplexCommand>

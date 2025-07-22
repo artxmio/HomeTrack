@@ -2,11 +2,11 @@
 using HomeTrack.Application.ResidentialComplex.Commands.AddHouseToResidentialComplex;
 using HomeTrack.Application.ResidentialComplex.Commands.CreateResidentialComplex;
 using HomeTrack.Application.ResidentialComplex.Commands.DeleteResidentialComplex;
+using HomeTrack.Application.ResidentialComplex.Commands.RemoveHouseFromResidentialComplex;
 using HomeTrack.Application.ResidentialComplex.Commands.UpdateResidentialComplex;
 using HomeTrack.Application.ResidentialComplex.Queries.GetHouseByResidentialComplex;
 using HomeTrack.Application.ResidentialComplex.Queries.GetResidentialComplexDetails;
 using HomeTrack.Application.ResidentialComplex.Queries.GetResidentialComplexesList;
-using HomeTrack.Application.ResidentialComplex.RemoveHouseFromResidentialComplex;
 using HomeTrack.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace HomeTrack.Application.ResidentialComplex.RemoveHouseFromResidentialComplex;
+namespace HomeTrack.Application.ResidentialComplex.Commands.RemoveHouseFromResidentialComplex;
 
 public class RemoveHouseFromResidentialComplexCommand
     : IRequest

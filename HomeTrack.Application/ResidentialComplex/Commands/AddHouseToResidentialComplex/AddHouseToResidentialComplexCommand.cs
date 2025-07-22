@@ -6,5 +6,5 @@ public class AddHouseToResidentialComplexCommand
     : IRequest
 {
     public Guid HouseId { get; set; }
-    public Guid ResidendialComplexId { get; set; }
+    public Guid ResidentialComplexId { get; set; }
 }

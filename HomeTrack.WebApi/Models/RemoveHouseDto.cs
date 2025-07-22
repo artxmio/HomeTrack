@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HomeTrack.Application.Common.Mappings;
-using HomeTrack.Application.ResidentialComplex.RemoveHouseFromResidentialComplex;
+using HomeTrack.Application.ResidentialComplex.Commands.RemoveHouseFromResidentialComplex;
 
 namespace HomeTrack.WebApi.Models;
 
