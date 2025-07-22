@@ -29,9 +29,5 @@ public class UpdateApartmentCommandValidator
         RuleFor(command => command.Floor)
             .InclusiveBetween(1, 1000)
             .WithMessage("Floor must be in the range from 1 to 1000");
-
-        RuleFor(command => command.HouseId)
-            .NotEqual(Guid.Empty)
-            .WithMessage("HouseId must not be an empty GUID");
     }
 }

@@ -34,9 +34,5 @@ public class UpdateHouseCommandValidator
         RuleFor(command => command.NumberOfEntrances)
             .InclusiveBetween(1, 50)
             .WithMessage("Number of entrances must be between 1 and 50");
-
-        RuleFor(command => command.ResidentialComplexId)
-            .NotEqual(Guid.Empty)
-            .WithMessage("ResidentialComplexId must not be an empty GUID");
     }
 }

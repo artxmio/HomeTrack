@@ -9,6 +9,4 @@ public class UpdateApartmentCommand : IRequest
     public int Entrance { get; set; }
     public int Floor { get; set; }
     public int Area { get; set; }
-
-    public Guid HouseId { get; set; }
 }

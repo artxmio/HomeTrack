@@ -10,6 +10,4 @@ public class UpdateHouseCommand : IRequest
     public string Number { get; set; } = string.Empty;
     public int NumberOfFloors { get; set; }
     public int NumberOfEntrances { get; set; }
-
-    public Guid ResidentialComplexId { get; set; }
 }

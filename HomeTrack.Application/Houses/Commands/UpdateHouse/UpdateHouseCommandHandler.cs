@@ -21,7 +21,6 @@ public class UpdateHouseCommandHandler(IHomeTrackDbContext dbContext) :
         house.Number = request.Number;
         house.NumberOfEntrances = request.NumberOfEntrances;
         house.NumberOfFloors = request.NumberOfFloors;
-        house.ResidentialСomplexId = request.ResidentialComplexId;
         house.UpdateDate = DateTime.Now;
 
         await _dbContext.SaveChangesAsync(cancellationToken);

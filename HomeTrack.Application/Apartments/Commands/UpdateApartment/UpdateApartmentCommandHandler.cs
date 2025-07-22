@@ -21,7 +21,6 @@ public class UpdateApartmentCommandHandler(IHomeTrackDbContext dbContext) :
         apartment.Floor = request.Floor;
         apartment.Area = request.Area;
         apartment.Number = request.Number;
-        apartment.HouseId = request.HouseId;
         apartment.UpdateDate = DateTime.Now;
 
         await _dbContext.SaveChangesAsync(cancellationToken);
