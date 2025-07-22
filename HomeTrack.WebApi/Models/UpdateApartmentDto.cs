@@ -11,7 +11,6 @@ public class UpdateApartmentDto : IMapWith<UpdateApartmentCommand>
     public int Entrance { get; set; }
     public int Floor { get; set; }
     public int Area { get; set; }
-    public Guid HouseId { get; set; }
 
     public void Mapping(Profile profile)
     {
@@ -25,8 +24,6 @@ public class UpdateApartmentDto : IMapWith<UpdateApartmentCommand>
             .ForMember(apartmentCommand => apartmentCommand.Floor,
                        opt => opt.MapFrom(apartmentDto => apartmentDto.Floor))
             .ForMember(apartmentCommand => apartmentCommand.Area,
-                       opt => opt.MapFrom(apartmentDto => apartmentDto.Area))
-            .ForMember(apartmentCommand => apartmentCommand.HouseId,
-                       opt => opt.MapFrom(apartmentDto => apartmentDto.HouseId));
+                       opt => opt.MapFrom(apartmentDto => apartmentDto.Area));
     }
 }

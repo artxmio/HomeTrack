@@ -14,7 +14,7 @@ public class AddHouseDto : IMapWith<AddHouseToResidentialComplexCommand>
         profile.CreateMap<AddHouseDto, AddHouseToResidentialComplexCommand>()
             .ForMember(addHouseCommand => addHouseCommand.HouseId,
                        opt => opt.MapFrom(addHouseDto => addHouseDto.HouseId))
-            .ForMember(addApartmentCommand => addApartmentCommand.ResidendialComplexId,
-                       opt => opt.MapFrom(addApartmenttDto => addApartmenttDto.ResidentialComplexId));
+            .ForMember(addApartmentCommand => addApartmentCommand.ResidentialComplexId,
+                       opt => opt.MapFrom(addHouseDto => addHouseDto.ResidentialComplexId));
     }
 }
