@@ -8,6 +8,7 @@ using HomeTrack.Application.ResidentialComplex.Queries.GetHouseByResidentialComp
 using HomeTrack.Application.ResidentialComplex.Queries.GetResidentialComplexDetails;
 using HomeTrack.Application.ResidentialComplex.Queries.GetResidentialComplexesList;
 using HomeTrack.WebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeTrack.WebApi.Controllers;
@@ -18,6 +19,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     public readonly IMapper _mapper = mapper;
 
     [HttpGet("get-all")]
+    [Authorize]
     public async Task<ActionResult<ResidentialComplexListVm>> GetAll()
     {
         var query = new GetResidentialComplexListQuery();
@@ -28,6 +30,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get")]
+    [Authorize]
     public async Task<ActionResult<ResidentialComplexListVm>> Get([FromQuery] Guid id)
     {
         var query = new GetResidentialComplexDetailsQuery()
@@ -41,6 +44,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get-houses")]
+    [Authorize]
     public async Task<ActionResult<HouseByResidentialComplexVm>> GetHouses([FromQuery] Guid id)
     {
         var query = new GetHouseByResidentialComplexQuery()
@@ -54,6 +58,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpPost("create")]
+    [Authorize]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateResidentialComplexDto createResidentComplexDto)
     {
         var command = _mapper.Map<CreateResidentialComplexCommand>(createResidentComplexDto);
@@ -64,6 +69,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpPatch("add-house")]
+    [Authorize]
     public async Task<ActionResult> AddHouse([FromBody] AddHouseDto addHouseDto)
     {
         var command = _mapper.Map<AddHouseToResidentialComplexCommand>(addHouseDto);
@@ -74,6 +80,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpPatch("remove-house")]
+    [Authorize]
     public async Task<ActionResult> RemoveHouseFromResidentialComplex([FromBody] RemoveHouseDto removeHouseDto)
     {
         var command = _mapper.Map<RemoveHouseFromResidentialComplexCommand>(removeHouseDto);
@@ -84,6 +91,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpPut("update")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] UpdateResidentialComplexDto updateResidentialComplexDto)
     {
         var command = _mapper.Map<UpdateResidentialComplexCommand>(updateResidentialComplexDto);
@@ -94,6 +102,7 @@ public class ResidentialComplexController(IMapper mapper) : BaseController
     }
 
     [HttpDelete("delete")]
+    [Authorize]
     public async Task<IActionResult> Delete([FromQuery] Guid id)
     {
         var command = new DeleteResidentialComplexCommand()

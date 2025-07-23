@@ -5,6 +5,7 @@ using HomeTrack.Application.Residents.Commands.UpdateResident;
 using HomeTrack.Application.Residents.Queries.GetResidentDetails;
 using HomeTrack.Application.Residents.Queries.GetResidentList;
 using HomeTrack.WebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeTrack.WebApi.Controllers;
@@ -15,6 +16,7 @@ public class ResidentController(IMapper mapper) : BaseController
     private readonly IMapper _mapper = mapper;
 
     [HttpGet("get-all")]
+    [Authorize]
     public async Task<ActionResult<ResidentListVm>> GetAll()
     {
         var query = new GetResidentListQuery();
@@ -25,6 +27,7 @@ public class ResidentController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get")]
+    [Authorize]
     public async Task<ActionResult<ResidentDetailsVm>> Get([FromQuery] Guid id)
     {
         var query = new GetResidentDetailsQuery()
@@ -38,6 +41,7 @@ public class ResidentController(IMapper mapper) : BaseController
     }
 
     [HttpPost("create")]
+    [Authorize]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateResidentDto createResidentDto)
     {
         var command = _mapper.Map<CreateResidentCommand>(createResidentDto);
@@ -48,6 +52,7 @@ public class ResidentController(IMapper mapper) : BaseController
     }
 
     [HttpPut("update")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] UpdateResidentDto updateResidentDto)
     {
         var command = _mapper.Map<UpdateResidentCommand>(updateResidentDto);
@@ -58,6 +63,7 @@ public class ResidentController(IMapper mapper) : BaseController
     }
 
     [HttpDelete("delete")]
+    [Authorize]
     public async Task<IActionResult> Delete([FromQuery] Guid id)
     {
         var command = new DeleteResidentCommand()

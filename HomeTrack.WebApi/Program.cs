@@ -2,8 +2,9 @@
 using HomeTrack.Application.Common.Mappings;
 using HomeTrack.Application.Interfaces;
 using HomeTrack.Persistense;
-using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,11 +45,23 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddOpenApi();
 
-using var scope = builder.Services.BuildServiceProvider().GetRequiredService<IServiceScopeFactory>().CreateScope();
-var context = scope.ServiceProvider.GetRequiredService<HomeTrackDbContext>();
-DbInitializer.Initialize(context);
+builder.Services.AddAuthentication(config =>
+{
+    config.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    config.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer("Bearer", options =>
+    {
+        options.Authority = "https://localhost:7220";
+        options.Audience = "HomeTrackWebAPI";
+        options.RequireHttpsMetadata = false;
+    });
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<HomeTrackDbContext>();
+DbInitializer.Initialize(context);
 
 if (app.Environment.IsDevelopment())
 {
@@ -62,11 +75,13 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseExceptionHandler();
+//app.UseExceptionHandler();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.UseRouting();
 app.UseCors("AllowAll");
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run();

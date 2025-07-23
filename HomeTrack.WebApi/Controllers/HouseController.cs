@@ -10,6 +10,7 @@ using HomeTrack.Application.Houses.Queries.GetApartmentsByHouse;
 using HomeTrack.Application.Houses.Queries.GetHouseDetails;
 using HomeTrack.Application.Houses.Queries.GetHouseList;
 using HomeTrack.WebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HomeTrack.WebApi.Controllers;
@@ -20,6 +21,7 @@ public class HouseController(IMapper mapper) : BaseController
     public readonly IMapper _mapper = mapper;
 
     [HttpGet("get-all")]
+    [Authorize]
     public async Task<ActionResult<HouseListVm>> GetAll()
     {
         var query = new GetHouseListQuery();
@@ -30,6 +32,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get")]
+    [Authorize]
     public async Task<ActionResult<HouseDetailsVm>> Get([FromQuery] Guid id)
     {
         var query = new GetHouseDetailsQuery()
@@ -43,6 +46,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpGet("get-apartments")]
+    [Authorize]
     public async Task<ActionResult<ApartmentByHouseVm>> GetApartments([FromQuery] Guid id)
     {
         var query = new GetApartmentByHouseQuery()
@@ -56,6 +60,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpPost("create")]
+    [Authorize]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateHouseDto createHouseDto)
     {
         var command = _mapper.Map<CreateHouseCommand>(createHouseDto);
@@ -66,6 +71,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpPatch("add-apartment")]
+    [Authorize]
     public async Task<ActionResult> AddApartment([FromBody] AddApartmentDto addApartmentDto)
     {
         var command = _mapper.Map<AddApartmentToHouseCommand>(addApartmentDto);
@@ -76,6 +82,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpPatch("remove-apartment")]
+    [Authorize]
     public async Task<ActionResult> RemoveResidentFromApartment([FromBody] RemoveApartmentDto removeApartmentDto)
     {
         var command = _mapper.Map<RemoveApartmentFromHouseCommand>(removeApartmentDto);
@@ -86,6 +93,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpPut("update")]
+    [Authorize]
     public async Task<IActionResult> Update([FromBody] UpdateHouseDto updateHouseDto)
     {
         var command = _mapper.Map<UpdateHouseCommand>(updateHouseDto);
@@ -96,6 +104,7 @@ public class HouseController(IMapper mapper) : BaseController
     }
 
     [HttpDelete("delete")]
+    [Authorize]
     public async Task<IActionResult> Delete([FromQuery] Guid id)
     {
         var command = new DeleteHouseCommand()
