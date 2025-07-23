@@ -16,6 +16,9 @@ public class AddResidentToApartmentCommandHandler(IHomeTrackDbContext dbContext)
         var resident = await _dbContext.Residents.FirstOrDefaultAsync(r => r.Id == request.ResidentId, cancellationToken) ?? 
             throw new NotFoundException(nameof(Resident), request.ResidentId);
 
+        if (resident.ApartmentId == request.ApartmentId)
+            throw new AlreadyExistException(nameof(Resident), nameof(resident.ApartmentId), request.ApartmentId);
+
         resident.ApartmentId = request.ApartmentId;
         resident.UpdateDate = DateTime.Now;
 

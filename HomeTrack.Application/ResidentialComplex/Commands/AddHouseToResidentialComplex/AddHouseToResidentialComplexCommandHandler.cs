@@ -17,6 +17,9 @@ public class AddHouseToResidentialComplexCommandHandler(IHomeTrackDbContext dbCo
             .FirstOrDefaultAsync(h => h.Id == request.HouseId, cancellationToken)
             ?? throw new NotFoundException(nameof(House), request.HouseId);
 
+        if (house.ResidentialСomplexId == request.ResidentialComplexId)
+            throw new AlreadyExistException(nameof(House), nameof(house.ResidentialСomplex), request.ResidentialComplexId);
+
         house.ResidentialСomplexId = request.ResidentialComplexId;
         house.UpdateDate = DateTime.Now;
 
