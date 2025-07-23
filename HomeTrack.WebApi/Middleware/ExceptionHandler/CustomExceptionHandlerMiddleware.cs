@@ -5,7 +5,7 @@ using HomeTrack.Application.Exceptions;
 
 namespace HomeTrack.WebApi.Middleware.ExceptionHandler;
 
-public class ExceptionHandlerMiddleware(RequestDelegate next)
+public class CustomExceptionHandlerMiddleware(RequestDelegate next)
 {
     private readonly RequestDelegate _next = next;
 
