@@ -6,15 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HomeTrack.Application.Residents.Commands.UpdateResident;
 
-public class UpdateResidentCommandHandler
-    : IRequestHandler<UpdateResidentCommand>
+public class UpdateResidentCommandHandler(IHomeTrackDbContext dbContext)
+        : IRequestHandler<UpdateResidentCommand>
 {
-    private readonly IHomeTrackDbContext _dbContext;
-
-    public UpdateResidentCommandHandler(IHomeTrackDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    private readonly IHomeTrackDbContext _dbContext = dbContext;
 
     public async Task Handle(UpdateResidentCommand request, CancellationToken cancellationToken)
     {

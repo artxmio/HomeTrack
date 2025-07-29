@@ -4,15 +4,10 @@ using MediatR;
 
 namespace HomeTrack.Application.Residents.Commands.CreateResident;
 
-public class CreateResidentCommandHandler
-    : IRequestHandler<CreateResidentCommand, Guid>
+public class CreateResidentCommandHandler(IHomeTrackDbContext dbContext)
+        : IRequestHandler<CreateResidentCommand, Guid>
 {
-    private readonly IHomeTrackDbContext _dbContext;
-
-    public CreateResidentCommandHandler(IHomeTrackDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    private readonly IHomeTrackDbContext _dbContext = dbContext;
 
     public async Task<Guid> Handle(CreateResidentCommand request, CancellationToken cancellationToken)
     {

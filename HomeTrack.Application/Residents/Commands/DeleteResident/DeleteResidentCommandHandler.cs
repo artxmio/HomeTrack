@@ -1,4 +1,4 @@
-﻿    using HomeTrack.Application.Exceptions;
+﻿using HomeTrack.Application.Exceptions;
 using HomeTrack.Application.Interfaces;
 using HomeTrack.Domain;
 using MediatR;
